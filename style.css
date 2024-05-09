@@ -1,0 +1,84 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  gap: 120px;
+}
+#result {
+  margin-top: 20px;
+}
+.reset {
+  background-color: transparent;
+  color: #ffff00;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+}
+#score #totalWins {
+  margin-right: 20px;
+}
+#score #totalLosses {
+  margin-right: 20px;
+}
+.buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.buttons-container button {
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.emoji {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 36px;
+}
+.text {
+  margin-top: 5px;
+}
+.hasil {
+  font-weight: bold;
+  font-size: 50px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#playAgainBtn {
+  background-color: #2c2c2c;
+  color: #ffffff;
+  padding: 1px 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  display: none;
+}
+#playAgainBtn .play-again {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

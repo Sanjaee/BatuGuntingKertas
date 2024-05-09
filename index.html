@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Game Kertas Gunting Batu</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="score">
+      Total Menang: <span id="totalWins">0</span> Total Kalah:
+      <span id="totalLosses">0</span>
+      <button class="reset" onclick="reset()">Reset Game</button>
+    </div>
+
+    <div class="container">
+      <div class="hasil" id="result">Pilih salah satu!</div>
+      <button id="playAgainBtn" onclick="playAgain()" style="display: none">
+        <div class="play-again">
+          <p>Main Lagi</p>
+          <img src="/image/Vector.png" alt="" />
+        </div>
+      </button>
+    </div>
+
+    <div class="buttons-container">
+      <button onclick="play('gunting')">
+        <p class="emoji">✌🏻</p>
+        <p class="text">Gunting</p>
+      </button>
+      <button class="button" onclick="play('kertas')">
+        <p class="emoji">🖐🏻</p>
+        <p class="text">Kertas</p>
+      </button>
+      <button onclick="play('batu')">
+        <p class="emoji">✊🏻</p>
+        <p class="text">Batu</p>
+      </button>
+    </div>
+
+    <script>
+      let totalWins = 0;
+      let totalLosses = 0;
+      let lastResultText = "Pilih salah satu!";
+      const playAgainBtn = document.getElementById("playAgainBtn");
+
+      function play(playerChoice) {
+        const choices = ["kertas", "gunting", "batu"];
+        const computerChoice =
+          choices[Math.floor(Math.random() * choices.length)];
+
+        if (playerChoice === computerChoice) {
+          lastResultText = "Seri!";
+        } else if (playerChoice === "kertas") {
+          if (computerChoice === "batu") {
+            lastResultText = `Kamu menang, komputer memilih ${getEmoji(
+              computerChoice
+            )}`;
+            totalWins++;
+          } else {
+            lastResultText = `Kamu kalah, komputer memilih ${getEmoji(
+              computerChoice
+            )}`;
+            totalLosses++;
+          }
+        } else if (playerChoice === "gunting") {
+          if (computerChoice === "kertas") {
+            lastResultText = `Kamu menang, komputer memilih ${getEmoji(
+              computerChoice
+            )}`;
+            totalWins++;
+          } else {
+            lastResultText = `Kamu kalah, komputer memilih ${getEmoji(
+              computerChoice
+            )}`;
+            totalLosses++;
+          }
+        } else if (playerChoice === "batu") {
+          if (computerChoice === "gunting") {
+            lastResultText = `Kamu menang, komputer memilih ${getEmoji(
+              computerChoice
+            )}`;
+            totalWins++;
+          } else {
+            lastResultText = `Kamu kalah, komputer memilih ${getEmoji(
+              computerChoice
+            )}`;
+            totalLosses++;
+          }
+        }
+
+        updateResult();
+        playAgainBtn.style.display = "block";
+      }
+
+      function playAgain() {
+        lastResultText = "Pilih salah satu!";
+        updateResult();
+        playAgainBtn.style.display = "none";
+      }
+
+      function reset() {
+        totalWins = 0;
+        totalLosses = 0;
+        updateResult();
+        playAgainBtn.style.display = "none";
+      }
+
+      function updateResult() {
+        document.getElementById("result").innerText = lastResultText;
+        document.getElementById("totalWins").innerText = totalWins;
+        document.getElementById("totalLosses").innerText = totalLosses;
+        const color =
+          lastResultText === "Pilih salah satu!"
+            ? "#ffffff"
+            : lastResultText.includes("kalah")
+            ? "#ff0000"
+            : "#00ff00";
+        document.getElementById("result").style.color = color;
+      }
+
+      function getEmoji(choice) {
+        if (choice === "kertas") return "🖐🏻";
+        if (choice === "gunting") return "✌🏻";
+        if (choice === "batu") return "✊🏻";
+      }
+    </script>
+  </body>
+</html>
